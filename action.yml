@@ -1,0 +1,12 @@
+name: 'Skaffold.dev utility for EKS'
+description: 'GitHub Action for skaffold to deploy to EKS'
+author: 'Catalin Gheonea <catalin.gheonea@gmail.com>'
+branding:
+  icon: 'terminal'
+  color: 'blue'
+inputs:
+  KUBE_CONFIG:
+    description: 'Kubernetes configuration file'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
