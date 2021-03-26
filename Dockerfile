@@ -18,7 +18,7 @@ RUN apk add --no-cache \
         awscli \
     && rm -rf /var/cache/apk/*
 
-RUN curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64 && install skaffold /usr/local/bin/
+RUN curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64 && \
+    install skaffold /usr/local/bin/
 
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["cluster-info"]
