@@ -1,8 +1,10 @@
-FROM alpine:3.10.2
+FROM alpine:3.13
 
 ARG KUBE_VERSION="1.20.4"
 
 COPY entrypoint.sh /entrypoint.sh
+
+RUN apk add --no-cache openrc
 
 RUN chmod +x /entrypoint.sh && \
     apk add --no-cache --update openssl curl ca-certificates && \
@@ -18,7 +20,11 @@ RUN apk add --no-cache \
         awscli \
     && rm -rf /var/cache/apk/*
 
+RUN apk add --no-cache  --repository http://dl-cdn.alpinelinux.org/alpine/edge/main --repository  http://dl-cdn.alpinelinux.org/alpine/edge/community docker
+
 RUN curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64 && \
     install skaffold /usr/local/bin/
+
+RUN rc-update add docker
 
 ENTRYPOINT ["/entrypoint.sh"]
