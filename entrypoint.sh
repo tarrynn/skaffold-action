@@ -21,4 +21,4 @@ echo "/usr/local/bin/kubectl" >> $GITHUB_PATH
 
 aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com
 
-skaffold run --default-repo ${AWS_ACCOUNT_ID}.dkr.ecr.eu-west-1.amazonaws.com
+skaffold run --default-repo ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com
